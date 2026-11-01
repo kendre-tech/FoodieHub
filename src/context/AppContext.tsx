@@ -217,10 +217,35 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [trackingOrderId, setTrackingOrderId] = useState<string | null>('ORD-9021');
 
   // Load from LocalStorage with safe fallbacks
+  const repairBrokenImage = (url: string | undefined, name: string): string => {
+    if (!url || url.includes('1621996346565-e3d5d6281691')) {
+      return name === 'Pasta'
+        ? 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=800&auto=format&fit=crop&q=80'
+        : 'https://images.unsplash.com/photo-1608897013039-887f21d8c804?w=800&auto=format&fit=crop&q=80';
+    }
+    if (!url || url.includes('1576107232684-1279f3908594')) {
+      return 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=800&auto=format&fit=crop&q=80';
+    }
+    if (!url || url.includes('1583032015879-11c5e45a0b16')) {
+      return 'https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=800&auto=format&fit=crop&q=80';
+    }
+    if (!url || url.includes('1616428236166-51f7d540e1f7')) {
+      return 'https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?w=800&auto=format&fit=crop&q=80';
+    }
+    if (!url || url.includes('1589119908995-c6837fa14d48')) {
+      return 'https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?w=800&auto=format&fit=crop&q=80';
+    }
+    return url;
+  };
+
   const [foods, setFoods] = useState<FoodItem[]>(() => {
     try {
       const saved = localStorage.getItem('hoodihub_foods');
-      return saved ? JSON.parse(saved) : INITIAL_FOOD_ITEMS;
+      const loaded: FoodItem[] = saved ? JSON.parse(saved) : INITIAL_FOOD_ITEMS;
+      return loaded.map((item) => ({
+        ...item,
+        image: repairBrokenImage(item.image, item.name),
+      }));
     } catch {
       return INITIAL_FOOD_ITEMS;
     }
@@ -229,7 +254,11 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [categories, setCategories] = useState<Category[]>(() => {
     try {
       const saved = localStorage.getItem('hoodihub_categories');
-      return saved ? JSON.parse(saved) : INITIAL_CATEGORIES;
+      const loaded: Category[] = saved ? JSON.parse(saved) : INITIAL_CATEGORIES;
+      return loaded.map((cat) => ({
+        ...cat,
+        image: repairBrokenImage(cat.image, cat.name),
+      }));
     } catch {
       return INITIAL_CATEGORIES;
     }
