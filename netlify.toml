@@ -1,0 +1,29 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+  VITE_SUPABASE_URL = "https://eqvocjukksgtqmgdbjog.supabase.co"
+  VITE_SUPABASE_ANON_KEY = "sb_publishable_V2REwz8klxohRj5As7SWhg_6w2jZI5J"
+
+# Single Page Application (SPA) redirect rule
+# Ensures all route requests (e.g. /restaurants, /cart, /admin) load index.html without 404
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Security and performance headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

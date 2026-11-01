@@ -1,0 +1,6 @@
+{
+  "name": "HoodiHub - Food Ordering & Delivery",
+  "description": "HoodiHub is a modern food ordering and delivery platform inspired by Zomato and Swiggy, created by Dhanashri Kendre. Features complete User, Admin, and Delivery Partner panels with live tracking.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
