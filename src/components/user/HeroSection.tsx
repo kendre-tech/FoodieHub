@@ -10,6 +10,8 @@ import {
   TrendingUp,
 } from 'lucide-react';
 
+import heroFoodPlatter from '../../assets/images/hero_food_platter_1793505373019.jpg';
+
 export const HeroSection: React.FC = () => {
   const {
     foods,
@@ -29,7 +31,8 @@ export const HeroSection: React.FC = () => {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [locLoading, setLocLoading] = useState(false);
 
-  const heroImage = '/src/assets/images/hero_food_platter_1793505373019.jpg';
+  const fallbackHeroImage = 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200&auto=format&fit=crop&q=80';
+  const heroImage = heroFoodPlatter || '/images/hero_food_platter_1793505373019.jpg';
 
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -63,6 +66,11 @@ export const HeroSection: React.FC = () => {
           src={heroImage}
           alt="Gourmet Food Feast HoodiHub"
           className="w-full h-full object-cover scale-105 filter blur-xs"
+          onError={(e) => {
+            if (e.currentTarget.src !== fallbackHeroImage) {
+              e.currentTarget.src = fallbackHeroImage;
+            }
+          }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/90 to-slate-950/70" />
       </div>
@@ -235,6 +243,11 @@ export const HeroSection: React.FC = () => {
                 src={heroImage}
                 alt="HoodiHub Food Spread"
                 className="w-full h-80 sm:h-96 object-cover group-hover:scale-105 transition-transform duration-700"
+                onError={(e) => {
+                  if (e.currentTarget.src !== fallbackHeroImage) {
+                    e.currentTarget.src = fallbackHeroImage;
+                  }
+                }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent pointer-events-none" />
 

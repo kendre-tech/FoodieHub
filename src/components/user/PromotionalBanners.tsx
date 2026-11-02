@@ -1,6 +1,9 @@
 import React from 'react';
 import { useApp } from '../../context/AppContext';
 import { Tag, Sparkles, ArrowRight, Copy, Check } from 'lucide-react';
+import bannerSpecialOffer from '../../assets/images/banner_special_offer_1793505373202.jpg';
+import bannerBiryani from '../../assets/images/banner_biryani_specials_1793505373810.jpg';
+import bannerDessert from '../../assets/images/banner_dessert_fest_1793505373885.jpg';
 
 export const PromotionalBanners: React.FC = () => {
   const { setSelectedCategoryFilter, setActivePage, applyCoupon } = useApp();
@@ -13,7 +16,8 @@ export const PromotionalBanners: React.FC = () => {
       subtitle: 'Gourmet Feast in Hoodi',
       code: 'HOODI50',
       category: 'all',
-      image: '/src/assets/images/banner_special_offer_1793505373202.jpg',
+      image: bannerSpecialOffer || '/images/banner_special_offer_1793505373202.jpg',
+      fallback: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&auto=format&fit=crop&q=80',
       badgeColor: 'bg-rose-600',
       tag: 'Grand Welcome Deal',
     },
@@ -23,7 +27,8 @@ export const PromotionalBanners: React.FC = () => {
       subtitle: 'Flat ₹100 OFF with Handi Flavors',
       code: 'WELCOME100',
       category: 'Indian Food',
-      image: '/src/assets/images/banner_biryani_specials_1793505373810.jpg',
+      image: bannerBiryani || '/images/banner_biryani_specials_1793505373810.jpg',
+      fallback: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=800&auto=format&fit=crop&q=80',
       badgeColor: 'bg-amber-600',
       tag: 'Royal Heritage',
     },
@@ -33,7 +38,8 @@ export const PromotionalBanners: React.FC = () => {
       subtitle: 'Molten Lava Cakes & Brownies',
       code: 'FESTIVE20',
       category: 'Desserts',
-      image: '/src/assets/images/banner_dessert_fest_1793505373885.jpg',
+      image: bannerDessert || '/images/banner_dessert_fest_1793505373885.jpg',
+      fallback: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=800&auto=format&fit=crop&q=80',
       badgeColor: 'bg-purple-600',
       tag: 'Sweet Indulgence',
     },
@@ -78,6 +84,11 @@ export const PromotionalBanners: React.FC = () => {
               alt={banner.title}
               className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-70 group-hover:opacity-80"
               referrerPolicy="no-referrer"
+              onError={(e) => {
+                if (e.currentTarget.src !== banner.fallback) {
+                  e.currentTarget.src = banner.fallback;
+                }
+              }}
             />
             {/* Dark Scrim */}
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent" />

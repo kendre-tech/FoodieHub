@@ -1,0 +1,21 @@
+# HoodiHub Robots.txt
+# Created by Dhanashri Kendre
+# Allows search engine crawlers (Googlebot, Bingbot, etc.) to index the entire website
+
+User-agent: *
+Allow: /
+
+# Disallow indexing of private administrative and API routes
+Disallow: /api/
+Disallow: /admin/login
+Disallow: /admin/dashboard
+
+# Specific bots
+User-agent: Googlebot
+Allow: /
+User-agent: Googlebot-Image
+Allow: /images/
+Allow: /assets/
+
+# XML Sitemaps for Google Search Console
+Sitemap: https://hoodihub.netlify.app/sitemap.xml

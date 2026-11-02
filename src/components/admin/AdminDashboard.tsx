@@ -1608,6 +1608,98 @@ export const AdminDashboard: React.FC = () => {
                 </div>
               </div>
             </div>
+
+            {/* Google Search & SEO Indexing Guide */}
+            <div className="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-5">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-2xl bg-rose-500/10 text-rose-600 flex items-center justify-center">
+                    <Search className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-base font-black text-slate-900 font-heading">
+                      Google Search SEO &amp; Indexing Setup
+                    </h3>
+                    <p className="text-xs text-slate-500">
+                      Files and settings configured so HoodiHub appears on Google Search
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-[11px] font-bold border border-emerald-200 flex items-center gap-1.5">
+                    <CheckCircle className="w-3.5 h-3.5" />
+                    <span>SEO Ready for Google</span>
+                  </span>
+                </div>
+              </div>
+
+              {/* Status Badges */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
+                <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+                  <div className="flex items-center justify-between">
+                    <span className="font-bold text-slate-800">robots.txt</span>
+                    <span className="text-[10px] font-bold text-emerald-600 bg-emerald-100/60 px-1.5 py-0.5 rounded">Active</span>
+                  </div>
+                  <p className="text-[11px] text-slate-500">Allows Googlebot to crawl and discover all pages</p>
+                </div>
+                <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+                  <div className="flex items-center justify-between">
+                    <span className="font-bold text-slate-800">sitemap.xml</span>
+                    <span className="text-[10px] font-bold text-emerald-600 bg-emerald-100/60 px-1.5 py-0.5 rounded">Active</span>
+                  </div>
+                  <p className="text-[11px] text-slate-500">Lists all 62 dishes, categories, and Latur hubs</p>
+                </div>
+                <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+                  <div className="flex items-center justify-between">
+                    <span className="font-bold text-slate-800">Schema.org JSON-LD</span>
+                    <span className="text-[10px] font-bold text-emerald-600 bg-emerald-100/60 px-1.5 py-0.5 rounded">Active</span>
+                  </div>
+                  <p className="text-[11px] text-slate-500">Google Rich Snippets for FoodEstablishment &amp; App</p>
+                </div>
+                <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+                  <div className="flex items-center justify-between">
+                    <span className="font-bold text-slate-800">Latur Local SEO</span>
+                    <span className="text-[10px] font-bold text-emerald-600 bg-emerald-100/60 px-1.5 py-0.5 rounded">Active</span>
+                  </div>
+                  <p className="text-[11px] text-slate-500">Geo tags for 413512, Shivaji Chowk &amp; Ausa Rd</p>
+                </div>
+              </div>
+
+              {/* Step-by-Step Google Search Console Instructions */}
+              <div className="bg-slate-900 text-white rounded-2xl p-4 sm:p-5 space-y-3 text-xs">
+                <div className="flex items-center justify-between">
+                  <h4 className="font-bold text-amber-400 font-heading text-sm">
+                    How to get your live Netlify website on Google Search in 24–48 hours:
+                  </h4>
+                  <a
+                    href="https://search.google.com/search-console"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-1 text-[11px] font-bold text-teal-300 hover:text-teal-200 underline"
+                  >
+                    <span>Open Google Search Console</span>
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
+                </div>
+                <ol className="list-decimal list-inside space-y-2 text-slate-300 leading-relaxed text-[11px] sm:text-xs">
+                  <li>
+                    Go to <a href="https://search.google.com/search-console" target="_blank" rel="noreferrer" className="text-teal-400 font-bold underline">search.google.com/search-console</a> and sign in with your Google account.
+                  </li>
+                  <li>
+                    Click <strong>"Add Property"</strong> &rarr; Select <strong>"URL prefix"</strong> &rarr; Enter your live Netlify website URL (e.g. <code>https://your-app-name.netlify.app</code>).
+                  </li>
+                  <li>
+                    In the left menu, click <strong>"Sitemaps"</strong>.
+                  </li>
+                  <li>
+                    In the <em>"Add a new sitemap"</em> box, enter <code>sitemap.xml</code> and click <strong>Submit</strong>. Googlebot will immediately begin crawling and indexing your site!
+                  </li>
+                  <li>
+                    Click <strong>"URL Inspection"</strong> at the top, enter your site URL, and click <strong>"Request Indexing"</strong> for expedited Google ranking.
+                  </li>
+                </ol>
+              </div>
+            </div>
           </div>
         )}
       </div>
